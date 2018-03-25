@@ -1,31 +1,45 @@
+{% case section.settings.grid %}
+  {% when 2 %}
+    {%- assign grid_item_width = 'medium-up--one-half' -%}
+  {% when 3 %}
+    {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+  {% when 4 %}
+    {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+  {% when 5 %}
+    {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+{% endcase %}
+
+
 {% if section.settings.title != blank %}
   <h2>{{ section.settings.title | escape }}</h2>
 {% endif %}
 
-{% for block in section.blocks limit: section.blocks.size %}
-  <div {{ block.shopify_attributes }}>
-    {%- assign collection = collections[block.settings.collection] -%}
+<ul class="grid grid--uniform">
+  {% for block in section.blocks limit: section.blocks.size %}
+    <li class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }}>
+      {%- assign collection = collections[block.settings.collection] -%}
 
-    <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
-      {% if collection.image != blank %}
-        {{ collection | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection.products.first != blank %}
-        {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
-      {% elsif collection == empty %}
-        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-      {% endif %}
-
-      <p>
-        {% if collection == empty %}
-          {{ 'homepage.onboarding.collection_title' | t }}
-        {% else %}
-          {{ collection.title }}
+      <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+        {% if collection.image != blank %}
+          {{ collection | img_url: '480x480' | img_tag: collection.title }}
+        {% elsif collection.products.first != blank %}
+          {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
+        {% elsif collection == empty %}
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
         {% endif %}
-      </p>
-    </a>
-  </div>
-{% endfor %}
+
+        <p>
+          {% if collection == empty %}
+            {{ 'homepage.onboarding.collection_title' | t }}
+          {% else %}
+            {{ collection.title }}
+          {% endif %}
+        </p>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
 
 {% if section.blocks.size == 0 %}
   {% include 'no-blocks' %}
@@ -41,6 +55,15 @@
         "id": "title",
         "label": "Heading",
         "default": "Collection list"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
       }
     ],
     "blocks": [
