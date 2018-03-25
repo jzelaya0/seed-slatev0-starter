@@ -170,3 +170,8 @@
 @mixin justify-content($justify: flex-start) {
   @include prefix(justify-content, $justify, webkit ms spec);
 }
+
+/*================ Misc. ================*/
+@mixin transform($transform) {
+  @include prefix(transform, $transform, ms webkit spec);
+}
