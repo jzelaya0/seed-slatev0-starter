@@ -9,4 +9,8 @@ html {
   max-width: $width-site;
   padding: 0 $gutter;
   margin: 0 auto;
+
+  @include media-query($small) {
+    padding: 0 $gutter-mobile;
+  }
 }
