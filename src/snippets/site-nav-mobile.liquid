@@ -1,0 +1,26 @@
+<nav role="navigation">
+  <ul class="mobile-nav">
+    {% for link in linklists[settings.main_linklist].links %}
+      {%- assign child_list_handle = link.title | handleize -%}
+      {% if menus[child_list_handle].links != blank %}
+        <li class="mobile-nav--has-submenu{% if link.active %} mobile-nav--active{% endif %}">
+          <a href="{{ link.url }}" class="mobile-nav__link">
+            {{ link.title }}
+            {% include 'icon-arrow-down' %}
+          </a>
+          <ul class="mobile-nav__submenu">
+            {% for childlink in menus[child_list_handle].links %}
+              <li {% if childlink.active %}class="mobile-nav--active"{% endif %}>
+                <a href="{{ childlink.url }}" class="mobile-nav__link">{{ childlink.title | escape }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li {% if link.active %}class="mobile-nav--active"{% endif %}>
+          <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
