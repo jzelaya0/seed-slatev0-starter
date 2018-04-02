@@ -1,0 +1,130 @@
+/*================ Drawers ================*/
+.is-transitioning {
+  // sass-lint:disable no-important
+  display: block !important;
+  visibility: visible !important;
+}
+
+.drawer {
+  // sass-lint:disable no-misspelled-properties
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: $z-index-drawer;
+  background-color: $color-body;
+  transition: $transition-drawer;
+
+  input[type="text"],
+  textarea {
+    background-color: $color-body;
+    color: $color-body-text;
+  }
+}
+
+.js-drawer-open {
+  overflow: hidden;
+}
+
+.drawer--top {
+  width: 100%;
+
+  .js-drawer-open-top & {
+    @include transform(translateY(100%));
+    display: block;
+  }
+}
+
+.drawer--left {
+  width: $drawer-width;
+  left: -$drawer-width;
+  border-right: 1px solid $color-border;
+
+  .js-drawer-open-left & {
+    display: block;
+    @include transform(translateX($drawer-width));
+
+    .lt-ie9 & {
+      left: 0;
+    }
+  }
+}
+
+.drawer--right {
+  width: $drawer-width;
+  right: -$drawer-width;
+  border-left: 1px solid $color-border;
+
+  .js-drawer-open-right & {
+    display: block;
+    @include transform(translateX(-$drawer-width));
+
+    .lt-ie9 & {
+      right: 0;
+    }
+  }
+}
+
+.drawer-page-content::after {
+  visibility: hidden;
+  opacity: 0;
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-drawer-background;
+  z-index: $z-index-drawer - 1;
+  transition: $transition-drawer;
+
+  .js-drawer-open & {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.drawer__header {
+  display: table;
+  height: 70px;
+  width: 100%;
+  margin-bottom: $gutter / 2;
+  border-bottom: 1px solid $color-border;
+}
+
+.drawer__close,
+.drawer__title {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.drawer__close-button {
+  background: none;
+  border: 0 none;
+  position: relative;
+  right: -15px;
+  height: 100%;
+  width: 60px;
+  padding: 0 20px;
+  color: inherit;
+  font-size: em(18);
+
+  &:active,
+  &:focus {
+    background-color: darken($color-drawer-background, 5%);
+  }
+}
+
+/*================ Mobile Nav Drawer ================*/
+.mobile-nav-drawer {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  bottom: 0;
+  padding: 0 $grid-gutter $grid-gutter;
+  z-index: $z-index-drawer;
+  transition: $transition-drawer;
+}

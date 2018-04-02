@@ -7,6 +7,10 @@
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
   <header role="banner">
+    <a href="#" class="js-drawer-open-left">
+      {%- include 'icon-hamburger' -%}
+      <span class="icon-fallback-text">{{ 'layout.navigation.toggle' | t }}</span>
+    </a>
     {% if template.name == 'index' %}
       <h1 itemscope itemtype="http://schema.org/Organization">
     {% else %}

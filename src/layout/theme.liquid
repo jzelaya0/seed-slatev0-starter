@@ -65,13 +65,21 @@
 
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
+  {% comment %}
+  Mobile Nav
+  {% endcomment %}
+  <div id="MobileNavDrawer" class="mobile-nav-drawer drawer drawer--left">
+  </div>
+
   {% section 'header' %}
 
-  <main role="main" id="MainContent">
-    {{ content_for_layout }}
-  </main>
+  <div id="PageContainer" class="page-container">
+    <main role="main" id="MainContent" class="main-content">
+      {{ content_for_layout }}
+    </main>
 
-  {% section 'footer' %}
+    {% section 'footer' %}
+  </div>
 
 </body>
 </html>

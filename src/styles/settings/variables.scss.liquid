@@ -6,6 +6,7 @@ $color-body-text: {{ settings.color_body_text }};
 
 // Backgrounds
 $color-body: #fff;
+$color-drawer-background: rgba(0, 0, 0, 0.6);
 
 // Border colors
 $color-border: #f6f6f6;
@@ -76,7 +77,12 @@ $gutter-mobile: 15px;
 
 /*================ Z-Index ================*/
 $z-index-dropdown: 2;
+$z-index-drawer: 9;
 $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 /*================ SVG ================*/
 $svg-select-icon: #{'{{ "ico-select.svg" | asset_url }}'};
+
+/*================ Drawers ================*/
+$transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
+$drawer-width: 300px;

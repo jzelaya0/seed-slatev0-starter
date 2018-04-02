@@ -223,6 +223,12 @@
     }
   },
   "layout": {
+    "navigation": {
+      "search": "Search",
+      "toggle": "expand\/collapse",
+      "expand": "expand",
+      "collapse": "collapse"
+    },
     "cart": {
       "title": "Cart",
       "items_count": {

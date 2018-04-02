@@ -11,6 +11,10 @@ window.theme = window.theme || {};
 // =require slate/images.js
 // =require slate/variants.js
 
+/*================ Slate ================*/
+// =require global/drawers.js
+// =require global/mobile-nav-drawer.js
+
 /*================ Sections ================*/
 // =require sections/product.js
 
@@ -51,4 +55,7 @@ $(document).ready(function() {
   if (slate.cart.cookiesEnabled()) {
     document.documentElement.className = document.documentElement.className.replace('supports-no-cookies', 'supports-cookies');
   }
+
+  // init mobile drawers
+  theme.MobileNav.init();
 });
