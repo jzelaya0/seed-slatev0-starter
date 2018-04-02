@@ -83,7 +83,7 @@
 
   <nav role="navigation">
     <ul class="site-nav">
-      {% for link in linklists[section.settings.main_linklist].links %}
+      {% for link in linklists[settings.main_linklist].links %}
         {%- assign child_list_handle = link.title | handleize -%}
         {% if menus[child_list_handle].links != blank %}
           <li class="site-nav--has-submenu{% if link.active %} site-nav--active{% endif %}">
@@ -127,12 +127,6 @@
         "unit": "px",
         "label": "Custom logo width",
         "default": 250
-      },
-      {
-        "type": "link_list",
-        "id": "main_linklist",
-        "label": "Menu",
-        "default": "main-menu"
       }
     ]
   }
