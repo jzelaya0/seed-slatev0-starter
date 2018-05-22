@@ -91,11 +91,27 @@
               {{ link.title }}
               {% include 'icon-arrow-down' %}
             </a>
-            <ul class="site-nav__submenu">
+            <ul class="site-nav__submenu site-nav__submenu--children-list">
               {% for childlink in menus[child_list_handle].links %}
-                <li {% if childlink.active %}class="site-nav--active"{% endif %}>
-                  <a href="{{ childlink.url }}" class="site-nav__link">{{ childlink.title | escape }}</a>
-                </li>
+                {% if childlink.links != blank %}
+                  <li class="site-nav--has-submenu{% if link.active %} site-nav--active{% endif %}">
+                    <a href="{{ childlink.url }}" class="site-nav__link">
+                      {{ childlink.title }}
+                      {% include 'icon-arrow-down' %}
+                    </a>
+                    <ul class="site-nav__submenu site-nav__submenu--grandchildren-list">
+                      {% for grandchildlink in childlink.links %}
+                        <li {% if grandchildlink.active %}class="site-nav--active"{% endif %}>
+                          <a href="{{ grandchildlink.url }}" class="site-nav__link">{{ grandchildlink.title | escape }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% else %}
+                  <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+                    <a href="{{ childlink.url }}" class="site-nav__link">{{ childlink.title | escape }}</a>
+                  </li>
+                {% endif %}
               {% endfor %}
             </ul>
           </li>

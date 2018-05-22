@@ -10,9 +10,25 @@
           </a>
           <ul class="mobile-nav__submenu">
             {% for childlink in menus[child_list_handle].links %}
-              <li {% if childlink.active %}class="mobile-nav--active"{% endif %}>
-                <a href="{{ childlink.url }}" class="mobile-nav__link">{{ childlink.title | escape }}</a>
-              </li>
+              {% if childlink.links != blank %}
+                <li class="mobile-nav--has-submenu{% if link.active %} mobile-nav--active{% endif %}">
+                  <a href="{{ childlink.url }}" class="mobile-nav__link">
+                    {{ childlink.title | escape }}
+                    {% include 'icon-arrow-down' %}
+                  </a>
+                  <ul class="mobile-nav__submenu">
+                    {% for grandchildlink in childlink.links %}
+                    <li {% if grandchildlink.active %}class="mobile-nav--active"{% endif %}>
+                      <a href="{{ grandchildlink.url }}" class="mobile-nav__link">{{ grandchildlink.title | escape }}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% else %}
+                <li {% if childlink.active %}class="mobile-nav--active"{% endif %}>
+                  <a href="{{ childlink.url }}" class="mobile-nav__link">{{ childlink.title | escape }}</a>
+                </li>
+              {% endif %}
             {% endfor %}
           </ul>
         </li>
