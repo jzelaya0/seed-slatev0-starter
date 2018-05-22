@@ -1,0 +1,102 @@
+{% case section.settings.grid %}
+  {% when 2 %}
+    {%- assign grid_item_width = 'medium-up--one-half' -%}
+  {% when 3 %}
+    {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+  {% when 4 %}
+    {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+  {% when 5 %}
+    {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+{% endcase %}
+
+{%- assign limit = section.settings.grid | times: section.settings.rows -%}
+
+{% paginate collection.products by limit %}
+  <header role="banner">
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+
+    {% if collection.all_tags.size > 0 %}
+      <ul>
+        {% for tag in collection.all_tags %}
+          {% if current_tags contains tag %}
+            <li class="active">
+              {{ tag | link_to_remove_tag: tag }}
+            </li>
+          {% else %}
+            <li>
+              {{ tag | link_to_tag: tag }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <ul class="grid grid--uniform">
+    {% for product in collection.products %}
+      <li class="grid__item {{ grid_item_width }}">
+        {%- include 'product-card' -%}
+      </li>
+
+    {% else %}
+      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+        {% for i in (1..8) %}
+          <li class="grid__item {{ grid_item_width }}">
+            <a href="#">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+            </a>
+
+            <p>
+              <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+            </p>
+
+            <p>
+              {{ 1999 | money }}
+            </p>
+          </li>
+        {% endfor %}
+      {% else %}
+        <li class="grid__item {{ grid_item_width }}">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </li>
+      {% endif %}
+
+    {% endfor %}
+  </ul>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Collection pages",
+    "settings": [
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Products per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "label": "Rows",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "default": 2
+      }
+    ]
+  }
+{% endschema %}
