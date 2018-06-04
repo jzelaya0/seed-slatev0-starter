@@ -12,12 +12,12 @@ $color-drawer-background: rgba(0, 0, 0, 0.6);
 $color-border: #f6f6f6;
 
 // Helper colors for form error states
-$color-disabled: #000;
-$color-disabled-border: #000;
-$color-error: #000;
-$color-error-bg: #000;
-$color-success: #000;
-$color-success-bg: #000;
+$color-disabled: #eee;
+$color-disabled-border: #ccc;
+$color-error: #e74c3c;
+$color-error-bg: #c0392b;
+$color-success: #2ecc71;
+$color-success-bg: #27ae60;
 
 /*================ Typography Variables ================*/
 $font-weight-normal: 400;
@@ -68,12 +68,14 @@ $breakpoints: (
     - Will not work if `styles/global/grid.scss` is removed
 ==============================================================================*/
 $breakpoint-has-widths: ($small, $medium-up);
-$breakpoint-has-push: ();
+$breakpoint-has-push: ($medium-up);
 
 /*================ Sizing Variables ================*/
 $width-site: 1180px;
 $gutter: 30px;
+$gutter-half: $gutter / 2;
 $gutter-mobile: 15px;
+$gutter-mobile-half: $gutter-mobile / 2;
 
 /*================ Z-Index ================*/
 $z-index-dropdown: 2;
