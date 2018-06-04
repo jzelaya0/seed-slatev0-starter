@@ -61,3 +61,31 @@ textarea {
     color: $color-error;
   }
 }
+
+/*================ Vertical forms ================*/
+.form-vertical {
+  input,
+  select,
+  textarea {
+    display: block;
+    width: 100%;
+    margin: 0 0 ($gutter-half);
+  }
+
+  [type="radio"],
+  [type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    margin-right: 5px;
+  }
+
+  [type="submit"],
+  .btn {
+    display: inline-block;
+    width: auto;
+  }
+
+  .btn {
+    margin-bottom: $gutter-half;
+  }
+}
