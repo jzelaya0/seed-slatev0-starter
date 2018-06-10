@@ -1,5 +1,5 @@
 {% paginate search.results by 10 %}
-
+<div class="page-width">
   <h1>
     {% if search.performed %}
       {% if search.results_count == 0 %}
@@ -29,9 +29,9 @@
 
 
 {% if search.performed %}
-    <ul>
+    <ul class="grid grid--uniform">
       {% for item in search.results %}
-        <li>
+        <li class="grid__item medium-up--one-third">
           {% assign featured_image = item.image | default: item.featured_image %}
           {% if featured_image != blank %}
             <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
@@ -77,5 +77,5 @@
       {% include 'pagination' %}
     {% endif %}
   {% endif %}
-
+</div>
 {% endpaginate %}
