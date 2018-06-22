@@ -5,10 +5,10 @@
 ==============================================================================*/
 
 /*================ UTILS ================*/
-@import url('tools/mixins.scss');
+@import url('shared/mixins.scss');
 
 /*================ SETTINGS ================*/
-@import url('settings/variables.scss.liquid');
+@import url('foundation/variables.scss.liquid');
 
 /*================ COMMON ================*/
 @import url('global/normalize.scss');
