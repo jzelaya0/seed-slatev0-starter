@@ -49,7 +49,7 @@
 @mixin media-query($media-query) {
   $breakpoint-found: false;
 
-  @each $breakpoint in $breakpoints {
+  @each $breakpoint in $grid-breakpoints {
     $name: nth($breakpoint, 1);
     $declaration: nth($breakpoint, 2);
 
@@ -125,6 +125,13 @@
   display: flex;
 }
 
+@mixin display-inline-flexbox() {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+
 @mixin flex-wrap($value: nowrap) {
   @include prefix(flex-wrap, $value, webkit moz ms spec);
 }
@@ -157,6 +164,12 @@
   @include prefix(flex-basis, $width, webkit moz spec);
 }
 
+@mixin order($value) {
+  -webkit-box-ordinal-group: $value + 1;
+  -ms-flex-order: $value;
+  order: $value;
+}
+
 @mixin align-self($align: auto) {
   // sass-lint:disable no-misspelled-properties
   -ms-flex-item-align: $align;
@@ -171,7 +184,67 @@
   @include prefix(justify-content, $justify, webkit ms spec);
 }
 
-/*================ Misc. ================*/
+/*================ Transform and Animation ================*/
 @mixin transform($transform) {
   @include prefix(transform, $transform, ms webkit spec);
+}
+
+@mixin transition($transition) {
+  @include prefix(transition, $transition, ms webkit spec);
+}
+
+@mixin animation($animation) {
+  @include prefix(animation, #{$animation}, moz o webkit spec);
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(spin) {
+  0% {
+    @include transform(rotate(0deg));
+  }
+
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+/*================ Gradient ================*/
+@mixin gradient($side, $from, $to) {
+  background: -ms-linear-gradient($side, $from 0%, $to 100%);
+  background: linear-gradient(to $side, $from 0%, $to 100%);
+}
+
+/*================ Spinner ================*/
+@mixin spinner($size: 1.25rem, $color: $color-btn-primary-text) {
+  content: '';
+  display: block;
+  width: $size;
+  height: $size;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: - $size / 2;
+  margin-top: - $size / 2;
+  border-radius: 50%;
+  border: 3px solid $color;
+  border-top-color: transparent;
+}
+
+/*================ Box Shadow ================*/
+@mixin box-shadow($value) {
+  @include prefix(box-shadow, $value, webkit);
 }

@@ -1,9 +1,6 @@
+$drawer-width: rem(300px);
+
 /*================ Drawers ================*/
-.is-transitioning {
-  // sass-lint:disable no-important
-  display: block !important;
-  visibility: visible !important;
-}
 
 .drawer {
   // sass-lint:disable no-misspelled-properties
@@ -89,7 +86,7 @@
   display: table;
   height: 70px;
   width: 100%;
-  margin-bottom: $gutter / 2;
+  margin-bottom: spacing();
   border-bottom: 1px solid $color-border;
 }
 

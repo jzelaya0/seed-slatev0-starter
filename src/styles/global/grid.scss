@@ -10,7 +10,7 @@
   padding: 0;
   margin-left: -$grid-gutter;
 
-  @include media-query($small) {
+  @include media-query($small-down) {
     margin-left: -$grid-gutter-mobile;
   }
 }
@@ -20,7 +20,7 @@
   padding-left: $grid-gutter;
   width: 100%;
 
-  @include media-query($small) {
+  @include media-query($small-down) {
     padding-left: $grid-gutter-mobile;
   }
 

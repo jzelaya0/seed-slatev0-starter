@@ -1,12 +1,26 @@
 /*================ Color Variables ================*/
+$black: #000;
+$white: #fff;
+
 $color-primary: {{ settings.color_primary }};
 
 // Text colors
 $color-body-text: {{ settings.color_body_text }};
 
+// Button colors
+$color-btn-primary:              $black;
+$color-btn-primary-text:         $white;
+$color-btn-primary-hover:        $black;
+$color-btn-primary-text-hover:   $white;
+
+$color-btn-secondary:            $white;
+$color-btn-secondary-text:       $black;
+$color-btn-secondary-hover:      $white;
+$color-btn-secondary-text-hover: $black;
+
 // Backgrounds
-$color-body: #fff;
-$color-drawer-background: rgba(0, 0, 0, 0.6);
+$color-body: $white;
+$color-drawer-background: color($black, 0.6);
 
 // Border colors
 $color-border: #f6f6f6;
@@ -20,45 +34,72 @@ $color-success: #2ecc71;
 $color-success-bg: #27ae60;
 
 /*================ Typography Variables ================*/
-$font-weight-normal: 400;
-$font-weight-bold: 700;
+$font-weight-normal: font-weight(normal);
+$font-weight-bold:   font-weight(bold);
 
-$font-stack-header: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-weight-header: $font-weight-bold;
+$font-stack-header:  font-family(header);
+$font-weight-header: font-weight(bold);
 
-$font-stack-body: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-size-base: {{ settings.type_base_size }};
+$font-stack-body: font-family(body);
+$font-size-base:  font-size(base);
+
 
 /*============================================================================
   Grid Breakpoints and Class Names
     - Do not change the variable names
 ==============================================================================*/
-$grid-medium: 750px;
-$grid-large: 990px;
-$grid-widescreen: 1400px;
-$grid-gutter: 30px;
-$grid-gutter-mobile: 15px;
 
-$small: 'small';
-$medium: 'medium';
-$medium-down: 'medium-down';
-$medium-up: 'medium-up';
-$large: 'large';
-$large-down: 'large-down';
-$large-up: 'large-up';
-$widescreen: 'widescreen';
+@function breakpoint($value, $adjustment: 0) {
+  $adjusted-value: em($adjustment);
+
+  // Reduces chances to have a style void
+  // between two media queries
+  // See https://github.com/sass-mq/sass-mq/issues/6
+  @if ($adjustment == -1px) {
+    $adjusted-value: -0.01em;
+  } @else if ($adjustment == 1px) {
+    $adjusted-value: 0.01em;
+  }
+
+  $adjusted-value: em($value) + $adjusted-value;
+
+  @return $adjusted-value;
+}
+
+$grid-small:      480px;
+$grid-medium:     768px;
+$grid-large:      1024px;
+$grid-widescreen: 1280px;
+
+$xs: 'xs';                        // 0 ~ 479
+$small-up: 'small-up';            // 480 ~ ...
+$small: 'small';                  // 480 ~ 767
+$small-down: 'small-down';        // 0 ~ 767
+$medium-up: 'medium-up';          // 768 ~ ...
+$medium: 'medium';                // 768 ~ 1024
+$medium-down: 'medium-down';      // 0 ~ 1023
+$large-up: 'large-up';            // 1024 ~ ...
+$large: 'large';                  // 1024 ~ 1279
+$large-down: 'large-down';        // 0 ~ 1279
+$medium-large: 'medium-large';    // 768 ~ 1279
+$widescreen: 'widescreen';        // 1280 ~ ...
 
 // The `$breakpoints` list is used to build our media queries.
 // You can use these in the media-query mixin.
-$breakpoints: (
-  $small '(max-width: #{$grid-medium - 1})',
-  $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
-  $medium-down '(max-width: #{$grid-large - 1})',
-  $medium-up '(min-width: #{$grid-medium})',
-  $large '(min-width: #{$grid-large}) and (max-width: #{$grid-widescreen - 1})',
-  $large-down '(max-width: #{$grid-widescreen - 1})',
-  $large-up '(min-width: #{$grid-large})',
-  $widescreen '(min-width: #{$grid-widescreen})'
+
+$grid-breakpoints: (
+  $xs '(max-width: #{breakpoint($grid-small, -1px)})',
+  $small-up '(min-width: #{breakpoint($grid-small)})',
+  $small '(min-width: #{breakpoint($grid-small)}) and (max-width: #{breakpoint($grid-medium, -1px)})',
+  $small-down '(max-width: #{breakpoint($grid-medium, -1px)})',
+  $medium-up '(min-width: #{breakpoint($grid-medium)})',
+  $medium '(min-width: #{breakpoint($grid-medium)}) and (max-width: #{breakpoint($grid-large, -1px)})',
+  $medium-down '(max-width: #{breakpoint($grid-large, -1px)})',
+  $large-up '(min-width: #{breakpoint($grid-large)})',
+  $large '(min-width: #{breakpoint($grid-large)}) and (max-width: #{breakpoint($grid-widescreen, -1px)})',
+  $large-down '(max-width: #{breakpoint($grid-widescreen, -1px)})',
+  $medium-large '(min-width: #{breakpoint($grid-medium)}) and (max-width: #{breakpoint($grid-widescreen, -1px)})',
+  $widescreen '(min-width: #{breakpoint($grid-widescreen)})'
 );
 
 /*============================================================================
@@ -67,24 +108,39 @@ $breakpoints: (
     - Default is no push classes
     - Will not work if `styles/global/grid.scss` is removed
 ==============================================================================*/
-$breakpoint-has-widths: ($small, $medium-up);
+$breakpoint-has-widths: ($xs, $small, $small-down, $medium-up, $medium-down, $medium, $large-up, $large, $widescreen);
 $breakpoint-has-push: ($medium-up);
 
+
 /*================ Sizing Variables ================*/
-$width-site: 1180px;
-$gutter: 30px;
-$gutter-half: $gutter / 2;
-$gutter-mobile: 15px;
-$gutter-mobile-half: $gutter-mobile / 2;
+$width-site: rem(1180px);
+$grid-gutter: spacing(loose);
+$grid-gutter-mobile: spacing();
 
 /*================ Z-Index ================*/
 $z-index-dropdown: 2;
-$z-index-drawer: 9;
+$z-index-drawer:   9;
+$z-index-modal:    9;
 $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 /*================ SVG ================*/
 $svg-select-icon: #{'{{ "ico-select.svg" | asset_url }}'};
 
-/*================ Drawers ================*/
-$transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
-$drawer-width: 300px;
+/*================ Opacity ================*/
+$opacity-link-hover: 0.6;
+
+/*================ Transitions ================*/
+$transition-ease:       0.1s cubic-bezier(0.25, 0.1, 0.25, 1);
+$transition-link-hover: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+$transition-drawer:     all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
+$transition-slideshow:  all 0.6s cubic-bezier(0.44, 0.13, 0.48, 0.87);
+
+/*================ Box Shadow ================*/
+$box-shadow-right-bottom: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
+$box-shadow-bottom: 0px 1px 1px 0 rgba(0, 0, 0, 0.1);
+$box-shadow: 0px 2px 16px -2px rgba(121, 121, 121, 0.1);
+
+/*================ Border radius ================*/
+$border-radius-circle:  50%;
+$border-radius-pill:    999rem;
+$border-radius:         0.5rem;

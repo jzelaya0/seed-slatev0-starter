@@ -56,6 +56,13 @@
   }
 }
 
+// prepare transition
+.is-transitioning {
+  // sass-lint:disable no-important
+  display: block !important;
+  visibility: visible !important;
+}
+
 /*============================================================================
   Skip to content button
     - Overrides .visually-hidden when focused
@@ -64,7 +71,7 @@
   @include visually-shown(absolute);
   color: $color-body-text;
   background-color: $color-body;
-  padding: $gutter / 2;
+  padding: spacing();
   z-index: $z-index-skip-to-content;
   transition: none;
 }

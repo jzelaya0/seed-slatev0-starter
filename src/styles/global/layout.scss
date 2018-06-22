@@ -7,11 +7,11 @@ html {
 .page-width {
   @include clearfix();
   max-width: $width-site;
-  padding: 0 $gutter;
+  padding: 0 spacing(loose);
   margin: 0 auto;
 
-  @include media-query($small) {
-    padding: 0 $gutter-mobile;
+  @include media-query($small-down) {
+    padding: 0 spacing();
   }
 }
 
@@ -43,5 +43,5 @@ li {
 
 /*================ Misc styles ================*/
 .address {
-  margin-bottom: $gutter;
+  margin-bottom: spacing(loose);
 }

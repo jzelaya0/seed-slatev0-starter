@@ -1,0 +1,273 @@
+@mixin flex-helpers-generator() {
+  // base properties
+  .flex-wrap--wrap {
+    @include flex-wrap(wrap);
+  }
+
+  .flex-direction--column {
+    @include flex-direction(column);
+  }
+
+  .flex-direction--row-reverse { 
+    @include flex-direction(row-reverse);
+  }
+
+  .justify--start {
+    @include justify-content(flex-start);
+  }
+
+  .justify--around {
+    @include justify-content(space-around);
+  }
+
+  .justify--between {
+    @include justify-content(space-between);
+  }
+
+  .justify--center {
+    @include justify-content(center);
+  }
+
+  .justify--end {
+    @include justify-content(flex-end);
+  }
+
+  .align-items--start {
+    @include align-items(flex-start);
+  }
+
+  .align-items--stretch {
+    @include align-items(stretch);
+  }
+
+  .align-items--center {
+    @include align-items(center);
+  }
+
+  .align-items--end {
+    @include align-items(flex-end);
+  }
+
+  .align-content--start {
+    @include align-content(flex-start);
+  }
+
+  // flex display
+  .flex {
+    @include display-flexbox();
+  }
+
+  .inline-flex {
+    @include display-inline-flexbox();
+  }
+
+  .flex--wrap {
+    @include display-flexbox();
+    @include flex-wrap(wrap);
+  }
+
+  .flex--wrap-reverse {
+    @include display-flexbox();
+    @include flex-wrap(wrap);
+    @include flex-direction(row-reverse);
+  }
+
+  .flex--column {
+    @include display-flexbox();
+    @include flex-direction(column);
+  }
+
+  // row center
+  .flex--center-start {
+    @include display-flexbox();
+    @include align-items(center);
+    @include justify-content(flex-start);
+  }
+
+  .flex--center-end {
+    @include display-flexbox();
+    @include align-items(center);
+    @include justify-content(flex-end);
+  }
+
+  .flex--center-between {
+    @include display-flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
+  .flex--center-around {
+    @include display-flexbox();
+    @include align-items(center);
+    @include justify-content(space-around);
+  }
+
+  .flex--center-center {
+    @include display-flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  // row stretch
+  .flex--stretch-end {
+    @include display-flexbox();
+    @include justify-content(flex-end);
+  }
+
+  .flex--stretch-between {
+    @include display-flexbox();
+    @include justify-content(space-between);
+  }
+
+  .flex--stretch-around {
+    @include display-flexbox();
+    @include justify-content(space-around);
+  }
+
+  .flex--stretch-center {
+    @include display-flexbox();
+    @include justify-content(center);
+  }
+
+  // row start
+  .flex--start-between {
+    @include display-flexbox();
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+  }
+
+  .flex--start-start {
+    @include display-flexbox();
+    @include align-items(flex-start);
+  }
+
+  .flex--start-center {
+    @include display-flexbox();
+    @include align-items(flex-start);
+    @include justify-content(center);
+  }
+
+  // row end
+  .flex--end-center {
+    @include display-flexbox();
+    @include align-items(flex-end);
+    @include justify-content(center);
+  }
+
+  .flex--end-between {
+    @include display-flexbox();
+    @include align-items(flex-end);
+    @include justify-content(space-between);
+  }
+
+  .flex--end-end {
+    @include display-flexbox();
+    @include align-items(flex-end);
+    @include justify-content(flex-end);
+  }
+
+  // column center
+  .flex--column-center-center {
+    @include display-flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  .flex--column-start-start {
+    @include display-flexbox();
+    @include flex-direction(column);
+    @include align-items(flex-start);
+  }
+
+  .flex--column-end-start {
+    @include display-flexbox();
+    @include flex-direction(column);
+    @include align-items(flex-end);
+    @include justify-content(start);
+  }
+
+  .inline-flex--center-between {
+    @include display-inline-flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
+  .inline-flex--center-center {
+    @include display-inline-flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  .inline-flex--center-around {
+    @include display-inline-flexbox();
+    @include align-items(center);
+    @include justify-content(space-around);
+  }
+
+  
+  // align helpers for flex column
+  // Vertical: top, middle, bottom; Horizontal: left, center, right;
+  .align-top-center {
+    @include align-items(center);
+    text-align: center;
+  }
+
+  .align-top-left {
+    @include align-items(flex-start);
+    text-align: left;
+  }
+
+  .align-top-right {
+    @include align-items(flex-end);
+    text-align: right;
+  }
+
+  .align-middle-center {
+    @include justify-content(center);
+    @include align-items(center);
+    text-align: center;
+  }
+
+  .align-middle-stretch {
+    @include justify-content(center);
+    text-align: center;
+  }
+
+  .align-middle-left {
+    @include justify-content(center);
+    @include align-items(flex-start);
+    text-align: left;
+  }
+
+  .align-middle-right {
+    @include justify-content(center);
+    @include align-items(flex-end);
+    text-align: right;
+  }
+
+  .align-bottom-center {
+    @include justify-content(flex-end);
+    @include align-items(center);
+    text-align: center;
+  }
+
+  .align-bottom-stretch {
+    @include justify-content(flex-end);
+    text-align: center;
+  }
+
+  .align-bottom-left {
+    @include justify-content(flex-end);
+    @include align-items(flex-start);
+    text-align: left;
+  }
+
+  .align-bottom-right {
+    @include justify-content(flex-end);
+    @include align-items(flex-end);
+    text-align: right;
+  }
+}
+
+@include flex-helpers-generator();

@@ -1,0 +1,107 @@
+// Replace values with settings if necessary
+
+$font-family-data: (
+  'body'  'body-family',
+  'header' 'header-family'
+);
+
+$font-weight-data: (
+  'thin'        100,
+  'extra-light' 200,
+  'light'       300,
+  'normal'      400,
+  'medium'      500,
+  'bold'        700,
+  'semi-bold'   600,
+  'extra-bold'  800,
+  'black'       900
+);
+
+$font-size-data: (
+  'xl'      rem(30px),
+  'large'   rem(20px),
+  'normal'  rem(18px),
+  'small'   rem(14px),
+  'xs'      rem(12px),
+  'base'    rem(16px),
+  'h1' rem(30px),
+  'h2' rem(20px),
+  'h3' rem(18px),
+  'h4' rem(18px),
+  'h5' rem(18px),
+  'h6' rem(18px),
+  'mobile-input' 1rem // To prevent zooming
+);
+
+$line-height-data: (
+  'xl'      1,
+  'large'   1,
+  'medium'  1,
+  'normal'  1,
+  'small'   1,
+  'xs'      1,
+  'h1' 1,
+  'h2' 1,
+  'h3' 1,
+  'h4' 1,
+  'h5' 1,
+  'h6' 1
+);
+
+@function font-family($type) {
+  $fetched-value: get-list-value($font-family-data, $type);
+
+  @if type-of($fetched-value) == string {
+    @return $fetched-value, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  } @else {
+    @warn '#{$type} not found in #{$font-family-data}';
+  }
+}
+
+@function font-weight($type) {
+  $fetched-value: get-list-value($font-weight-data, $type);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @warn '#{$type} not found in #{$font-weight-data}';
+  }
+}
+
+@function font-size($type) {
+  $fetched-value: get-list-value($font-size-data, $type);
+
+  @if type-of($fetched-value) != null {
+    @return $fetched-value;
+  } @else {
+    @warn '#{$type} not found in #{$font-size-data}';
+  }
+}
+
+@function line-height($type) {
+  $fetched-value: get-list-value(line-height, $type);
+
+  @if type-of($fetched-value) != null {
+    @return $fetched-value;
+  } @else {
+    @warn '#{$type} not found in #{line-height}';
+  }
+}
+
+@mixin font-size-and-height($type) {
+  $size-value: get-list-value($font-size-data, $type);
+
+  @if type-of($size-value) != null {
+    font-size: $size-value;
+  } @else {
+    @warn '#{$type} not found in #{$font-size-data}';
+  }
+  
+  $line-height-value: get-list-value($line-height-data, $type);
+  
+  @if type-of($line-height-value) != null {
+    line-height: $line-height-value;
+  } @else {
+    @warn '#{$type} not found in #{$line-height-data}';
+  }
+}

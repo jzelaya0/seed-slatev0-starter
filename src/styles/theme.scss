@@ -4,11 +4,11 @@
     - You cannot use native CSS/Sass @imports in this file without a build script
 ==============================================================================*/
 
-/*================ UTILS ================*/
-@import url('shared/mixins.scss');
-
-/*================ SETTINGS ================*/
+/*================ FOUNDATION ================*/
+@import url('foundation/utilities.scss');
+@import url('foundation/typography.scss');
 @import url('foundation/variables.scss.liquid');
+@import url('foundation/mixins.scss');
 
 /*================ COMMON ================*/
 @import url('global/normalize.scss');
