@@ -1,5 +1,5 @@
 @mixin flex-helpers-generator() {
-  // base properties
+  // Base properties
   .flex-wrap--wrap {
     @include flex-wrap(wrap);
   }
@@ -8,12 +8,16 @@
     @include flex-direction(column);
   }
 
-  .flex-direction--row-reverse { 
+  .flex-direction--row-reverse {
     @include flex-direction(row-reverse);
   }
 
   .justify--start {
     @include justify-content(flex-start);
+  }
+
+  .justify--center {
+    @include justify-content(center);
   }
 
   .justify--around {
@@ -22,10 +26,6 @@
 
   .justify--between {
     @include justify-content(space-between);
-  }
-
-  .justify--center {
-    @include justify-content(center);
   }
 
   .justify--end {
@@ -52,13 +52,19 @@
     @include align-content(flex-start);
   }
 
-  // flex display
+  // Flex display
   .flex {
     @include display-flexbox();
   }
 
   .inline-flex {
     @include display-inline-flexbox();
+  }
+
+  // Flex direction and wrap
+  .flex--column {
+    @include display-flexbox();
+    @include flex-direction(column);
   }
 
   .flex--wrap {
@@ -72,28 +78,11 @@
     @include flex-direction(row-reverse);
   }
 
-  .flex--column {
-    @include display-flexbox();
-    @include flex-direction(column);
-  }
-
-  // row center
+  // Row center
   .flex--center-start {
     @include display-flexbox();
     @include align-items(center);
     @include justify-content(flex-start);
-  }
-
-  .flex--center-end {
-    @include display-flexbox();
-    @include align-items(center);
-    @include justify-content(flex-end);
-  }
-
-  .flex--center-between {
-    @include display-flexbox();
-    @include align-items(center);
-    @include justify-content(space-between);
   }
 
   .flex--center-around {
@@ -108,15 +97,22 @@
     @include justify-content(center);
   }
 
-  // row stretch
-  .flex--stretch-end {
+  .flex--center-between {
     @include display-flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
+  .flex--center-end {
+    @include display-flexbox();
+    @include align-items(center);
     @include justify-content(flex-end);
   }
 
-  .flex--stretch-between {
+  // Row stretch
+  .flex--stretch-center {
     @include display-flexbox();
-    @include justify-content(space-between);
+    @include justify-content(center);
   }
 
   .flex--stretch-around {
@@ -124,18 +120,17 @@
     @include justify-content(space-around);
   }
 
-  .flex--stretch-center {
+  .flex--stretch-between {
     @include display-flexbox();
-    @include justify-content(center);
-  }
-
-  // row start
-  .flex--start-between {
-    @include display-flexbox();
-    @include align-items(flex-start);
     @include justify-content(space-between);
   }
 
+  .flex--stretch-end {
+    @include display-flexbox();
+    @include justify-content(flex-end);
+  }
+
+  // Row start
   .flex--start-start {
     @include display-flexbox();
     @include align-items(flex-start);
@@ -147,7 +142,13 @@
     @include justify-content(center);
   }
 
-  // row end
+  .flex--start-between {
+    @include display-flexbox();
+    @include align-items(flex-start);
+    @include justify-content(space-between);
+  }
+
+  // Row end
   .flex--end-center {
     @include display-flexbox();
     @include align-items(flex-end);
@@ -166,7 +167,7 @@
     @include justify-content(flex-end);
   }
 
-  // column center
+  // Column center
   .flex--column-center-center {
     @include display-flexbox();
     @include flex-direction(column);
@@ -174,12 +175,14 @@
     @include justify-content(center);
   }
 
+  // Column start
   .flex--column-start-start {
     @include display-flexbox();
     @include flex-direction(column);
     @include align-items(flex-start);
   }
 
+  // Column end
   .flex--column-end-start {
     @include display-flexbox();
     @include flex-direction(column);
@@ -187,12 +190,7 @@
     @include justify-content(start);
   }
 
-  .inline-flex--center-between {
-    @include display-inline-flexbox();
-    @include align-items(center);
-    @include justify-content(space-between);
-  }
-
+  // Inline flex
   .inline-flex--center-center {
     @include display-inline-flexbox();
     @include align-items(center);
@@ -205,7 +203,12 @@
     @include justify-content(space-around);
   }
 
-  
+  .inline-flex--center-between {
+    @include display-inline-flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+  }
+
   // align helpers for flex column
   // Vertical: top, middle, bottom; Horizontal: left, center, right;
   .align-top-center {
