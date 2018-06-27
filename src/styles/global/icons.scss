@@ -1,8 +1,19 @@
 /*================ Icons ================*/
+.icon-wrapper {
+  position: relative;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  font-size: 0; // remove inline element extra white space
+  text-align: center;
+  font-style: normal;
+}
+
 .icon {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: rem(20px);
+  height: rem(20px);
   vertical-align: middle;
   fill: currentColor;
 
@@ -12,7 +23,7 @@
 }
 
 .icon--wide {
-  width: 40px;
+  width: rem(40px);
 }
 
 svg,
@@ -30,7 +41,6 @@ symbol {
       stroke: inherit;
     }
   }
-
 }
 
 /*============================================================================
@@ -47,7 +57,7 @@ symbol {
 
 /*================ Payment Icons ================*/
 .payment-icons {
-  @include prefix('user-select', 'none', moz ms webkit spec);
+  @include prefix("user-select", "none", moz ms webkit spec);
   cursor: default;
 }
 
