@@ -33,7 +33,7 @@
       </div>
     {% endif %}
 
-    <a href="/cart">
+    <a href="#" class="js-ajaxcart-open">
       {% include 'icon-cart' %}
       {{ 'layout.cart.title' | t }}
       ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})

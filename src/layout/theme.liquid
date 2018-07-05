@@ -81,6 +81,28 @@
     {%- include 'site-nav-mobile' -%}
   </div>
 
+  {% comment %} Cart Drawer {% endcomment %}
+  <div id="CartDrawer" class="cart-drawer drawer drawer--right">
+    <div class="cart-drawer-inner flex--column">
+      <div class="cart-drawer__header">
+        <div class="flex--center-between">
+          <span class="icon-wrapper cart-drawer__spinner">
+            <i class="icon-spinner"></i>
+          </span>
+
+          <span class="js-ajaxcart-close btn--link">
+            {% include 'icon-close' %}
+          </span>
+        </div>
+        
+        <p>CART</p>
+      </div>
+
+      <ul id="CartBody" class="cart-drawer__bd">
+      </ul>
+    </div>
+  </div>
+
   {% section 'header' %}
 
   <div id="PageContainer" class="page-container">
@@ -90,6 +112,8 @@
 
     {% section 'footer' %}
   </div>
+
+  {% include 'template-ajaxcart' %}
 
 </body>
 </html>

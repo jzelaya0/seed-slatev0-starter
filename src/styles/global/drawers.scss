@@ -65,7 +65,7 @@ $drawer-width: rem(300px);
 .drawer-page-content::after {
   visibility: hidden;
   opacity: 0;
-  content: '';
+  content: "";
   display: block;
   position: fixed;
   top: 0;

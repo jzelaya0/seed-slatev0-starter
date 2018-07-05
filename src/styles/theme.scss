@@ -5,26 +5,28 @@
 ==============================================================================*/
 
 /*================ FOUNDATION ================*/
-@import url('foundation/utilities.scss');
-@import url('foundation/typography.scss');
-@import url('foundation/spacing.scss');
-@import url('foundation/variables.scss.liquid');
-@import url('foundation/mixins.scss');
+@import url("foundation/utilities.scss");
+@import url("foundation/typography.scss");
+@import url("foundation/spacing.scss");
+@import url("foundation/variables.scss.liquid");
+@import url("foundation/mixins.scss");
 
 /*================ COMMON ================*/
-@import url('global/normalize.scss');
-@import url('global/slate-reset.scss');
-@import url('global/helper-classes.scss');
-@import url('global/grid.scss');
-@import url('global/layout.scss');
-@import url('global/icons.scss');
-@import url('global/rte.scss');
-@import url('global/responsive-tables.scss');
-@import url('global/links-buttons.scss');
-@import url('global/forms.scss');
-@import url('global/blank-states.scss');
-@import url('global/drawers.scss');
+@import url("global/normalize.scss");
+@import url("global/slate-reset.scss");
+@import url("global/helper-classes.scss");
+@import url("global/grid.scss");
+@import url("global/flex.scss");
+@import url("global/layout.scss");
+@import url("global/icons.scss");
+@import url("global/rte.scss");
+@import url("global/responsive-tables.scss");
+@import url("global/links-buttons.scss");
+@import url("global/forms.scss");
+@import url("global/blank-states.scss");
+@import url("global/drawers.scss");
 
 /*================ MODULES ================*/
-@import url('modules/site-header.scss');
-@import url('modules/gift-card-template.scss');
+@import url("modules/ajax-cart.scss");
+@import url("modules/site-header.scss");
+@import url("modules/gift-card-template.scss");
