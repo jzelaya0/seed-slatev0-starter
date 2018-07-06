@@ -22,27 +22,20 @@ a {
   white-space: normal;
   transition: $transition-link-hover;
 
-  &:hover,
-  &:focus {
-    color: $color-btn-primary-text-hover;
-    background-color: color($color-btn-primary-hover, 0.6);
+  &:focus,
+  &:hover {
+    opacity: $opacity-link-hover;
   }
 
   &[disabled] {
     cursor: default;
-    opacity: 0.5;
+    opacity: $opacity-link-hover;
   }
 }
 
 .btn--secondary {
   color: $color-btn-secondary-text;
   background-color: $color-btn-secondary;
-
-  &:hover,
-  &:focus {
-    color: $color-btn-secondary-text-hover;
-    background-color: color($color-btn-secondary-hover, 0.6);
-  }
 }
 
 .btn--outline {
@@ -51,11 +44,6 @@ a {
   background-color: transparent;
   border-color: currentColor;
   color: currentColor;
-
-  &:hover,
-  &:focus {
-    background-color: color($white, 0.2);
-  }
 }
 
 .btn--link {
@@ -63,11 +51,6 @@ a {
   border: 0;
   margin: 0;
   text-align: left;
-
-  &:hover,
-  &:focus {
-    opacity: $opacity-link-hover;
-  }
 
   .icon {
     vertical-align: middle;

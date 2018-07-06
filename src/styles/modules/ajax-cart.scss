@@ -56,7 +56,7 @@
   }
 
   .icon-spinner {
-    @include spinner(rem(24px), $black);
+    @include spinner(rem(24px), $color-btn-primary);
     @include animation(spin 2s infinite linear);
   }
 }
@@ -67,7 +67,6 @@
 
   .ajaxcart__row {
     padding: spacing(loose) 0;
-    background-color: $white;
     @extend .border-bottom;
 
     // remove animation
@@ -111,7 +110,7 @@
     padding: 0 spacing(tight);
     border: none;
     background-color: transparent;
-    color: color($black, 0.8);
+    color: color($color-btn-primary, 0.8);
 
     &:focus {
       outline: none;
@@ -184,11 +183,6 @@
 
   .ajaxcart__savings {
     margin: spacing(loose) 0;
-  }
-
-  .ajaxcart__shipping-message {
-    color: color($black, 0.8);
-    // font-weight: weight(light);
   }
 
   .ajaxcart__btn-checkout {
