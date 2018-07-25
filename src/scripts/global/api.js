@@ -64,12 +64,12 @@ ShopifyAPI.addItemFromForm = function(data, callback, errorCallback) {
       beforeSend: function() {
         $(document.body).trigger("beforeAddItem.ajaxCart", data);
       },
-      success: function(cart) {
+      success: function(lineItem) {
         if (typeof callback === "function") {
-          callback(cart);
+          callback(lineItem);
         }
 
-        $body.trigger("afterAddItem.ajaxCart", [cart]);
+        $body.trigger("afterAddItem.ajaxCart", [lineItem]);
       },
       error: function(XMLHttpRequest, textStatus) {
         if (typeof errorCallback === "function") {
