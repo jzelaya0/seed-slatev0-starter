@@ -216,9 +216,7 @@ theme.AjaxCart = (function() {
 
         var data = $form.serialize();
 
-        ShopifyAPI.addItemFromForm(data, null, itemErrorCallback).then(function(
-          cart
-        ) {
+        ShopifyAPI.addItem(data, null, itemErrorCallback).then(function(cart) {
           cartUpdateCallback(cart);
           $body.trigger("afterCartChange.ajaxCart", cart);
         });

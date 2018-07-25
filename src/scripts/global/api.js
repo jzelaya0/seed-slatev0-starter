@@ -1,15 +1,20 @@
-/*============================================================================
-  Customized version of Shopify's jQuery API
-  (c) Copyright 2009 - 2015 Shopify Inc.Author: Caroline Schnapp.All Rights Reserved.
-==============================================================================*/
+/**
+ * API Functions
+ * Customized version of Shopify's jQuery API
+ * (c) Copyright 2009 - 2015 Shopify Inc.Author: Caroline Schnapp.All Rights Reserved.
+ *
+ * @namespace ShopifyAPI
+ */
 
-if (typeof ShopifyAPI === "undefined") {
-  ShopifyAPI = {};
-}
+window.ShopifyAPI = window.ShopifyAPI || {};
 
-/*============================================================================
-  API Functions
-==============================================================================*/
+/**
+ * Update cart note
+ *
+ * @param {String} note
+ * @param {Function} callback
+ * @returns {jqXHR}
+ */
 ShopifyAPI.updateCartNote = function(note, callback) {
   var $body = $(document.body),
     params = {
@@ -40,6 +45,12 @@ ShopifyAPI.updateCartNote = function(note, callback) {
   jQuery.ajax(params);
 };
 
+/**
+ * Error callback
+ *
+ * @param {Object} XMLHttpRequest
+ * @param {String} textStatus
+ */
 ShopifyAPI.onError = function(XMLHttpRequest, textStatus) {
   var data = eval("(" + XMLHttpRequest.responseText + ")");
   if (!!data.message) {
@@ -47,8 +58,16 @@ ShopifyAPI.onError = function(XMLHttpRequest, textStatus) {
   }
 };
 
-// Add item using form element instead of just id
-ShopifyAPI.addItemFromForm = function(data, callback, errorCallback) {
+/**
+ * Add a single item
+ * When adding multiple items, we have to chain each ajax call
+ *
+ * @param {Object} data
+ * @param {Function} callback
+ * @param {Function} errorCallback
+ * @returns {jqXHR}
+ */
+ShopifyAPI.addItem = function(data, callback, errorCallback) {
   var $body = $(document.body),
     params = {
       type: "POST",
@@ -81,7 +100,13 @@ ShopifyAPI.addItemFromForm = function(data, callback, errorCallback) {
   return ShopifyAPI.promiseChange(params);
 };
 
-// Get from cart.js returns the cart in JSON
+/**
+ * Get cart
+ *
+ * @param {Function} callback
+ * @param {Function} errorCallback
+ * @returns {jqXHR}
+ */
 ShopifyAPI.getCart = function(callback, errorCallback) {
   var $body = $(document.body),
     params = {
@@ -114,7 +139,14 @@ ShopifyAPI.getCart = function(callback, errorCallback) {
   return jQuery.ajax(params);
 };
 
-// Update cart, bulk change cart items
+/**
+ * Update cart
+ *
+ * @param {Object} data
+ * @param {Function} callback
+ * @param {Function} errorCallback
+ * @returns {jqXHR}
+ */
 ShopifyAPI.updateCart = function(data, callback, errorCallback) {
   var $body = $(document.body),
     params = {
@@ -153,7 +185,15 @@ ShopifyAPI.updateCart = function(data, callback, errorCallback) {
   return ShopifyAPI.promiseChange(params);
 };
 
-// POST to cart/change.js returns the cart in JSON
+/**
+ * Change a line item
+ *
+ * @param {Number} line
+ * @param {Number} quantity
+ * @param {Function} callback
+ * @param {Function} errorCallback
+ * @returns {jqXHR}
+ */
 ShopifyAPI.changeItem = function(line, quantity, callback, errorCallback) {
   var $body = $(document.body),
     params = {
@@ -187,13 +227,18 @@ ShopifyAPI.changeItem = function(line, quantity, callback, errorCallback) {
   return ShopifyAPI.promiseChange(params);
 };
 
+/**
+ * Get cart after the ajaxcall and store it to localState
+ *
+ * @param {Object} params - jQuery ajax call parameters
+ * @returns {jqXHR}
+ */
 ShopifyAPI.promiseChange = function(params) {
   var promiseRequest = $.ajax(params);
 
   return (
     promiseRequest
-      // Some cart API requests don't return the cart object. If there is no
-      // cart object then get one before proceeding.
+      // Some cart API requests don't return the cart object. If there is no cart object then get one before proceeding.
       .then(function(state) {
         if (typeof state.token === "undefined") {
           return ShopifyAPI.getCart();
