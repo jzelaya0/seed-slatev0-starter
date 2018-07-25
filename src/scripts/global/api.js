@@ -84,7 +84,7 @@ ShopifyAPI.addItemFromForm = function(data, callback, errorCallback) {
       }
     };
 
-  return jQuery.when(ShopifyAPI.promiseChange(params));
+  return ShopifyAPI.promiseChange(params);
 };
 
 // Get from cart.js returns the cart in JSON
@@ -117,7 +117,7 @@ ShopifyAPI.getCart = function(callback, errorCallback) {
       }
     };
 
-  return jQuery.when(jQuery.ajax(params));
+  return jQuery.ajax(params);
 };
 
 // Update cart, bulk change cart items
@@ -156,7 +156,7 @@ ShopifyAPI.updateCart = function(data, callback, errorCallback) {
       }
     };
 
-  return jQuery.when(ShopifyAPI.promiseChange(params));
+  return ShopifyAPI.promiseChange(params);
 };
 
 // POST to cart/change.js returns the cart in JSON
@@ -190,7 +190,7 @@ ShopifyAPI.changeItem = function(line, quantity, callback, errorCallback) {
       }
     };
 
-  return jQuery.when(ShopifyAPI.promiseChange(params));
+  return ShopifyAPI.promiseChange(params);
 };
 
 ShopifyAPI.promiseChange = function(params) {
