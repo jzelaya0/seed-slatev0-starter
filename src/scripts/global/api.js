@@ -10,10 +10,6 @@ if (typeof ShopifyAPI === "undefined") {
 /*============================================================================
   API Functions
 ==============================================================================*/
-ShopifyAPI.onCartUpdate = function(cart) {
-  // alert('There are now ' + cart.item_count + ' items in the cart.');
-};
-
 ShopifyAPI.updateCartNote = function(note, callback) {
   var $body = $(document.body),
     params = {
@@ -27,8 +23,6 @@ ShopifyAPI.updateCartNote = function(note, callback) {
       success: function(cart) {
         if (typeof callback === "function") {
           callback(cart);
-        } else {
-          ShopifyAPI.onCartUpdate(cart);
         }
         $body.trigger("afterUpdateCartNote.ajaxCart", [note, cart]);
       },
