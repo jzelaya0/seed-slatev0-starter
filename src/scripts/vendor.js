@@ -13,6 +13,11 @@
  */
 // =require vendor/preparetransition.min.js
 
+/* !
+ * Handlebars
+ */
+// =require vendor/handlebars.min.js
+
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.
 //
@@ -23,8 +28,3 @@
 // 2. A regular expression matches the string of the comment.
 //    For example: `MIT`, `@license`, or `Copyright`.
 // 3. There is a comment at the *previous* line, and it matches 1, 2, or 3.
-
-/* !
- * Handlebars
- */
-// =require vendor/handlebars.min.js

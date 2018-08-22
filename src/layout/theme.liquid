@@ -41,7 +41,9 @@
       strings: {
         addToCart: {{ 'products.product.add_to_cart' | t | json }},
         soldOut: {{ 'products.product.sold_out' | t | json }},
-        unavailable: {{ 'products.product.unavailable' | t | json }}
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        cartSavings: {{ 'cart.general.savings' | t | json }},
+        emptyCart: {{ 'cart.general.empty' | t | json }}
       },
       moneyFormat: {{ shop.money_format | json }}
     };
@@ -81,26 +83,20 @@
     {%- include 'site-nav-mobile' -%}
   </div>
 
-  {% comment %} Cart Drawer {% endcomment %}
+  {% comment %}
+    Cart Drawer
+  {% endcomment %}
   <div id="CartDrawer" class="cart-drawer drawer drawer--right">
-    <div class="cart-drawer-inner flex--column">
-      <div class="cart-drawer__header">
-        <div class="flex--center-between">
-          <span class="icon-wrapper cart-drawer__spinner">
-            <i class="icon-spinner"></i>
-          </span>
-
-          <span class="js-ajaxcart-close btn--link">
-            {% include 'icon-close' %}
-          </span>
-        </div>
-        
-        <p>CART</p>
+    <div class="drawer__header">
+      <div class="drawer__title h4">{{ 'cart.general.title' | t }}</div>
+      <div class="drawer__close drawer__close--right js-drawer-close">
+        <button class="drawer__close-button">
+          {% include 'icon-close' %}
+          <span class="icon-fallback-text">{{ 'layout.navigation.toggle' | t }}</span>
+        </button>
       </div>
-
-      <ul id="CartBody" class="cart-drawer__bd">
-      </ul>
     </div>
+    <div id="CartContainer" class="drawer__body"></div>
   </div>
 
   {% section 'header' %}
@@ -113,7 +109,7 @@
     {% section 'footer' %}
   </div>
 
-  {% include 'template-ajaxcart' %}
+  {% include 'ajax-cart-template' %}
 
 </body>
 </html>

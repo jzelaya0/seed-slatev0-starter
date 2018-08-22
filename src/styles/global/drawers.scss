@@ -62,6 +62,19 @@ $drawer-width: rem(300px);
   }
 }
 
+.drawer--left,
+.drawer--right {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  bottom: 0;
+  padding: 0 $grid-gutter $grid-gutter;
+  z-index: $z-index-drawer;
+  transition: $transition-drawer;
+}
+
 .drawer-page-content::after {
   visibility: hidden;
   opacity: 0;
@@ -120,17 +133,4 @@ $drawer-width: rem(300px);
   &:focus {
     background-color: darken($color-drawer-background, 5%);
   }
-}
-
-/*================ Mobile Nav Drawer ================*/
-.mobile-nav-drawer {
-  position: fixed;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  top: 0;
-  bottom: 0;
-  padding: 0 $grid-gutter $grid-gutter;
-  z-index: $z-index-drawer;
-  transition: $transition-drawer;
 }

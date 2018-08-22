@@ -64,7 +64,4 @@ $(document).ready(function() {
 
   // init mobile drawers
   theme.MobileNav.init();
-
-  // init ajaxcart
-  theme.initAjaxCart();
 });
