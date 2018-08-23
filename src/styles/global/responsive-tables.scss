@@ -33,7 +33,7 @@
       content: attr(data-label);
       float: left;
       text-align: center;
-      padding-right: 10px;
+      padding-right: spacing();
     }
   }
 
@@ -41,7 +41,7 @@
   .responsive-table-row + .responsive-table-row,
   tfoot > .responsive-table-row:first-child {
     position: relative;
-    margin-top: 10px;
+    margin-top: spacing();
     padding-top: spacing();
 
     &::after {

@@ -14,11 +14,11 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
 }
 
 .placeholder-svg--small {
-  width: 480px;
+  width: rem(480px);
 }
 
 .placeholder-noblocks {
-  padding: 40px;
+  padding: rem(40px);
   text-align: center;
 }
 

@@ -1,7 +1,4 @@
-$drawer-width: rem(300px);
-
 /*================ Drawers ================*/
-
 .drawer {
   // sass-lint:disable no-misspelled-properties
   display: none;
@@ -97,7 +94,7 @@ $drawer-width: rem(300px);
 
 .drawer__header {
   display: table;
-  height: 70px;
+  height: rem(70px);
   width: 100%;
   margin-bottom: spacing();
   border-bottom: 1px solid $color-border;
@@ -122,12 +119,12 @@ $drawer-width: rem(300px);
   background: none;
   border: 0 none;
   position: relative;
-  right: -15px;
+  right: rem(-15px);
   height: 100%;
-  width: 60px;
-  padding: 0 20px;
+  width: rem(60px);
+  padding: 0 rem(20px);
   color: inherit;
-  font-size: em(18);
+  font-size: rem(18);
 
   &:active,
   &:focus {
