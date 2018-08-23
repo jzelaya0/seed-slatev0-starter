@@ -7,11 +7,11 @@ html {
 .page-width {
   @include clearfix();
   max-width: $width-site;
-  padding: 0 spacing(loose);
+  padding: 0 $gutter;
   margin: 0 auto;
 
   @include media-query($small-down) {
-    padding: 0 spacing();
+    padding: 0 $gutter-mobile;
   }
 }
 

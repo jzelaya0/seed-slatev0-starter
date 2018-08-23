@@ -1,21 +1,8 @@
-$gutter: rem(12px);
-
-$spacing-data: (
-  'extra-tight' $gutter / 4,
-  'tight'       $gutter / 2,
-  'base'        $gutter,
-  'semi-loose'  $gutter * 1.5,
-  'loose'       $gutter * 2,
-  'extra-loose' $gutter * 4,
-  'super-loose' $gutter * 6
-);
-
+/*================ Spacing ================*/
 @function spacing($type: base) {
   $fetched-value: get-list-value($spacing-data, $type);
 
   @if type-of($fetched-value) == number {
     @return $fetched-value;
-  } @else {
-    @warn '#{$type} not found in #{$spacing-data}';
   }
 }

@@ -6,10 +6,12 @@
 
 /*================ TOOLS ================*/
 @import url("tools/utilities.scss");
+@import url("tools/mixins.scss");
 @import url("tools/typography.scss");
 @import url("tools/spacing.scss");
+
+/*================ SETTINGS ================*/
 @import url("tools/variables.scss.liquid");
-@import url("tools/mixins.scss");
 
 /*================ COMMON ================*/
 @import url("global/normalize.scss");
