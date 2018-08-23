@@ -47,8 +47,8 @@
         </p>
 
         {% if article.image %}
-          <a href="{{ article.url }}">
-            {{ article | img_url: '1024x1024' | img_tag: article.title }}
+          <a href="{{ article.url }}">            
+            {%- include 'lazy-image', image: article.image -%}
           </a>
         {% endif %}
 
@@ -99,6 +99,6 @@
 
 {% schema %}
   {
-    "name": "Blog pages"    
+    "name": "Blog pages"
   }
 {% endschema %}

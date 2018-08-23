@@ -45,3 +45,46 @@ li {
 .address {
   margin-bottom: spacing(loose);
 }
+
+/*================ Images ================*/
+/*** Responsive lazyloaded images ***/
+.ratio-box {
+	position: relative;
+	height: 0;
+	display: block;
+	width: 100%;
+	/* padding-top is calculated and rendered directly from HTML */
+}
+
+.ratio-box--video {
+  padding-top: 56.25%; // 16:9 aspect ratio
+}
+
+.ratio-box img,
+.ratio-box iframe,
+.ratio-box video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.background-box {
+  background-repeat: no-repeat;
+  background-color: #f7f7f7;
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+}
+
+.lazyload,
+.lazyloading {
+	opacity: 0.25;
+}
+
+.lazyloaded {
+	opacity: 1;
+	transition: $transition-lazyload;
+}

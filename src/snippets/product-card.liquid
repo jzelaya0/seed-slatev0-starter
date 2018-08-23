@@ -1,9 +1,5 @@
-<a href="{{ product.url | within: collection }}">
-
-  {% if product.featured_image != blank %}
-    {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
-  {% endif %}
-
+<a href="{{ product.url | within: collection }}">  
+  {%- include 'lazy-image', image: product.featured_image -%}
   <p>{{ product.title }}</p>
 </a>
 

@@ -34,8 +34,8 @@
         <li class="grid__item medium-up--one-third">
           {% assign featured_image = item.image | default: item.featured_image %}
           {% if featured_image != blank %}
-            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-              {{ featured_image | img_url: '240x240' | img_tag: featured_image.alt }}
+            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">              
+              {%- include 'lazy-image', image: featured_image -%}
             </a>
           {% endif %}
 

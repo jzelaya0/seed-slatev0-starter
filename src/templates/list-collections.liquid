@@ -8,10 +8,10 @@
   {% unless collection.handle == 'frontpage' %}
     <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
       {% if collection.image != blank %}
-        {{ collection | img_url: '480x480' | img_tag: collection.title }}
+        {%- include 'lazy-image', image: collection.image -%}
       {% elsif collection.products.first != blank %}
-        {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
-      {% else %}
+        {%- include 'lazy-image', image: collection.products.first.featured_image -%}
+      {% elsif collection == empty %}
         {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
         {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
       {% endif %}
