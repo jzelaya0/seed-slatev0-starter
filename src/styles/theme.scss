@@ -29,6 +29,13 @@
 @import url("global/drawers.scss");
 
 /*================ MODULES ================*/
-@import url("modules/ajax-cart.scss");
 @import url("modules/site-header.scss");
-@import url("modules/gift-card-template.scss");
+@import url("modules/site-footer.scss");
+@import url("modules/ajax-cart.scss");
+@import url("modules/product-card.scss");
+
+/*================ SECTIONS ================*/
+@import url("sections/product.scss");
+
+/*================ TEMPLATES ================*/
+@import url("templates/gift-card-template.scss");
