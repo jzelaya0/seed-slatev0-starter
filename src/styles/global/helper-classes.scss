@@ -75,3 +75,68 @@
   z-index: $z-index-skip-to-content;
   transition: none;
 }
+
+/*================ Flex Helper Classes ================*/
+// Flex displays
+.flex {
+  @include display-flexbox();
+}
+
+.flex-inline {
+  @include display-inline-flexbox();
+}
+
+// Flex row & direction properites
+.flex-wrap {
+  @include flex-wrap(wrap);
+}
+
+.flex-direction-column {
+  @include flex-direction(column);
+}
+
+.flex-direction-row-reverse {
+  @include flex-direction(row-reverse);
+}
+
+// Flex justify
+.justify-start {
+  @include justify-content(flex-start);
+}
+
+.justify-center {
+  @include justify-content(center);
+}
+
+.justify-around {
+  @include justify-content(space-around);
+}
+
+.justify-between {
+  @include justify-content(space-between);
+}
+
+.justify-end {
+  @include justify-content(flex-end);
+}
+
+// Flex align
+.align-items-start {
+  @include align-items(flex-start);
+}
+
+.align-items-stretch {
+  @include align-items(stretch);
+}
+
+.align-items-center {
+  @include align-items(center);
+}
+
+.align-items-end {
+  @include align-items(flex-end);
+}
+
+.align-content-start {
+  @include align-content(flex-start);
+}
