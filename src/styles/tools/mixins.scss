@@ -246,5 +246,5 @@
 
 /*================ Box Shadow ================*/
 @mixin box-shadow($value) {
-  @include prefix(box-shadow, $value, webkit);
+  @include prefix(box-shadow, $value, webkit spec);
 }
