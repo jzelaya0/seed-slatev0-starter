@@ -88,10 +88,10 @@
         <div class="grid__item one-third text-right">
           <p>{{{totalPrice}}}</p>
         </div>
-        {{#if totalCartDiscount}}
-          <p class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></p>
-        {{/if}}
       </div>
+      {{#if totalCartDiscount}}
+        <p class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></p>
+      {{/if}}
       <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
       <button type="submit" class="btn ajaxcart__checkout" name="checkout">
         {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}
