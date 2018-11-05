@@ -3,6 +3,17 @@
     - Selectors setup for you to style form elements how you want
     - Focus, error, and disabled states are set to be extended
 ==============================================================================*/
+input {
+  // prevent rounded corners on mobile devices
+  &[type="search"],
+  &[type="number"],
+  &[type="email"],
+  &[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+
 input,
 textarea,
 select {
