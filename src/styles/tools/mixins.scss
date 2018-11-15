@@ -248,3 +248,10 @@
 @mixin box-shadow($value) {
   @include prefix(box-shadow, $value, webkit spec);
 }
+
+/*================ Margin/Padding Spacing Helper ================*/
+@mixin spacing-helper($className, $index, $property, $type) {
+  .#{$className}-#{$index} {
+    #{$property}: spacing(#{$type});
+  }
+}

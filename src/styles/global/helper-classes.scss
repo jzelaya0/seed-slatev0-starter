@@ -140,3 +140,15 @@
 .align-content-start {
   @include align-content(flex-start);
 }
+
+/*================ Spacing Helpers ================*/
+@each $type in $spacing-data {
+  $i: index($spacing-data, $type) - 1;
+  $space: nth($type, 1);
+  $position-list: (top, bottom, left, right);
+
+  @each $position in $position-list {
+    @include spacing-helper(m-#{$position}, $i, margin-#{$position}, $space);
+    @include spacing-helper(p-#{$position}, $i, padding-#{$position}, $space);
+  }
+}
