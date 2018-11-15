@@ -16,7 +16,6 @@
 /*================ COMMON ================*/
 @import url("global/normalize.scss");
 @import url("global/slate-reset.scss");
-@import url("global/helper-classes.scss");
 @import url("global/typography.scss");
 @import url("global/grid.scss");
 @import url("global/layout.scss");
@@ -27,6 +26,7 @@
 @import url("global/forms.scss");
 @import url("global/blank-states.scss");
 @import url("global/drawers.scss");
+@import url("global/helper-classes.scss");
 
 /*================ MODULES ================*/
 @import url("modules/site-header.scss");
