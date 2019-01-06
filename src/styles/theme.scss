@@ -4,6 +4,10 @@
     - You cannot use native CSS/Sass @imports in this file without a build script
 ==============================================================================*/
 
+/*================ VENDOR ================*/
+@import url("vendor/slick.scss");
+@import url("vendor/slick-theme.scss");
+
 /*================ TOOLS ================*/
 @import url("tools/utilities.scss");
 @import url("tools/mixins.scss");

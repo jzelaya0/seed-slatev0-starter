@@ -18,6 +18,11 @@
  */
 // =require vendor/handlebars.min.js
 
+/* !
+ * slick.min.js - Ken Wheeler - http://kenwheeler.github.io/slick
+ */
+// =require vendor/slick.min.js
+
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.
 //
