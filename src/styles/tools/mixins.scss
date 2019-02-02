@@ -164,6 +164,10 @@
   @include prefix(flex-basis, $width, webkit moz spec);
 }
 
+@mixin flex-grow($grow: 1) {
+  @include prefix(flex-grow, $grow, webkit ms spec);
+}
+
 @mixin order($value) {
   -webkit-box-ordinal-group: $value + 1;
   -ms-flex-order: $value;
