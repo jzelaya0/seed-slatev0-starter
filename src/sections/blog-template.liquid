@@ -33,7 +33,7 @@
   ====================
   {% endcomment %}
 
-  <ul class="grid grid--uniform">
+  <ul class="grid">
     {% for article in blog.articles %}
       <li class="grid__item medium-up--one-third">
         <h3>
@@ -47,7 +47,7 @@
         </p>
 
         {% if article.image %}
-          <a href="{{ article.url }}">            
+          <a href="{{ article.url }}">
             {%- include 'lazy-image', image: article.image -%}
           </a>
         {% endif %}

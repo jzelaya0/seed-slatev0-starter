@@ -14,7 +14,7 @@
   <h2>{{ section.settings.title | escape }}</h2>
 {% endif %}
 
-<ul class="grid grid--uniform">
+<ul class="grid">
   {% for block in section.blocks limit: section.blocks.size %}
     <li class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }}>
       {%- assign collection = collections[block.settings.collection] -%}

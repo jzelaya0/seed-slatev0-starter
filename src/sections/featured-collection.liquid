@@ -17,7 +17,7 @@
 
 {%- assign collection = collections[section.settings.collection] -%}
 
-<ul class="grid grid--uniform">
+<ul class="grid">
   {% for product in collection.products limit: product_limit %}
     <li class="grid__item {{ grid_item_width }}">
       {%- include 'product-card' -%}

@@ -37,7 +37,7 @@
     {% endif %}
   </header>
 
-  <ul class="grid grid--uniform">
+  <ul class="grid">
     {% for product in collection.products %}
       <li class="grid__item {{ grid_item_width }}">
         {%- include 'product-card' -%}

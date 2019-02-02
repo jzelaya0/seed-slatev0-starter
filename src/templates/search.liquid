@@ -29,12 +29,12 @@
 
 
 {% if search.performed %}
-    <ul class="grid grid--uniform">
+    <ul class="grid">
       {% for item in search.results %}
         <li class="grid__item medium-up--one-third">
           {% assign featured_image = item.image | default: item.featured_image %}
           {% if featured_image != blank %}
-            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">              
+            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
               {%- include 'lazy-image', image: featured_image -%}
             </a>
           {% endif %}
